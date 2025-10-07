@@ -16,6 +16,7 @@ ffmpeg -i bunny_30s.y4m -vf scale=1280:720 -c:v libx264 -preset medium -crf 23 b
 # 1080p
 ffmpeg -i bunny_30s.y4m -vf scale=1920:1080 -c:v libx264 -preset medium -crf 23 bunny_1080p.mp4
 
+
 ffmpeg -i bunny_144p.mp4 -i bunny_30s.y4m -lavfi "[0:v]scale=1920:1080:flags=bicubic[dist];[dist][1:v]libvmaf=log_path=vmaf_144p.json:log_fmt=json" -f null -
 
 ffmpeg -i bunny_240p.mp4 -i bunny_30s.y4m -lavfi "[0:v]scale=1920:1080:flags=bicubic[dist];[dist][1:v]libvmaf=log_path=vmaf_240p.json:log_fmt=json" -f null -
@@ -36,5 +37,7 @@ ffprobe -v error -show_entries format=bit_rate -of default=noprint_wrappers=1:no
 ffprobe -v error -show_entries format=bit_rate -of default=noprint_wrappers=1:nokey=1 bunny_1080p.mp4
 
 python extract_vmaf.py
+
+
 <img width="640" height="480" alt="rate_distortion_curve" src="https://github.com/user-attachments/assets/298e9bc8-6edf-4ece-b40e-540072d728f0" />
 
