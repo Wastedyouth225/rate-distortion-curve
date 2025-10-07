@@ -11,5 +11,6 @@ plt.title('Кривая rate-distortion для Big Buck Bunny (h264)')
 for i, txt in enumerate(resolutions):
     plt.annotate(txt, (bitrates[i], vmaf_scores[i]), textcoords="offset points", xytext=(0,10), ha='center')
 plt.grid(True)
-plt.savefig('rate_distortion_curve.png')  # Сохранит как PNG-файл
+plt.savefig('rate_distortion_curve.png')  
+
 plt.show()
